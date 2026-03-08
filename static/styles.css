@@ -1,0 +1,75 @@
+:root {
+  color-scheme: dark;
+  --bg: #101728;
+  --panel: #1b2742;
+  --panel-2: #223256;
+  --text: #ecf2ff;
+  --muted: #b2c2e3;
+  --line: #324974;
+  --primary: #6ea8fe;
+  --danger: #ff7f9f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, sans-serif;
+  background: radial-gradient(circle at top, #1f315a, var(--bg));
+  color: var(--text);
+}
+
+.container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem 2rem; }
+
+.card {
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+}
+
+h1, h2 { margin: 0 0 0.6rem; }
+.muted { color: var(--muted); margin: 0 0 1rem; }
+
+.form-grid { display: grid; gap: 0.5rem; max-width: 420px; }
+input, button {
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #0f1b34;
+  color: var(--text);
+}
+button {
+  background: var(--primary);
+  border: none;
+  color: #051025;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.toolbar { display: flex; justify-content: space-between; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+.toolbar-actions { display: flex; gap: 0.5rem; }
+.btn { text-decoration: none; padding: 0.6rem 0.8rem; border-radius: 8px; font-weight: 700; }
+.secondary { background: var(--primary); color: #071022; }
+.danger { background: var(--danger); color: #2f0310; }
+.notice { background: #3f2c05; color: #ffd994; border: 1px solid #7a5a11; padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem; }
+
+.upload-form { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border-bottom: 1px solid var(--line); padding: 0.65rem 0.5rem; text-align: left; }
+
+a { color: #9dc7ff; }
+
+.alerts { margin-bottom: 1rem; display: grid; gap: 0.4rem; }
+.alert { padding: 0.65rem 0.8rem; border-radius: 8px; border: 1px solid; }
+.alert.success { background: #12321d; border-color: #2a7a46; color: #9ae4b3; }
+.alert.error { background: #3b1218; border-color: #8f2f40; color: #ffc0cc; }
+
+.back-link { display: inline-block; margin-top: 0.8rem; }
+
+@media (max-width: 780px) {
+  .toolbar { flex-direction: column; align-items: flex-start; }
+}

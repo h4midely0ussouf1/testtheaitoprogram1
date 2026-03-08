@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | File Manager{% endblock %}
+{% block content %}
+<header class="toolbar">
+  <div>
+    <h1>Welcome, {{ username }}</h1>
+    <p class="muted">Upload and download files/folders stored on the server disk.</p>
+  </div>
+  <div class="toolbar-actions">
+    <a class="btn secondary" href="{{ url_for('change_password') }}">Change Password</a>
+    <a class="btn danger" href="{{ url_for('logout') }}">Logout</a>
+  </div>
+</header>
+
+{% if not password_changed %}
+<div class="notice">Default password detected. Please change it now for security.</div>
+{% endif %}
+
+<section class="card">
+  <h2>Upload files or folders</h2>
+  <form method="post" enctype="multipart/form-data" class="upload-form">
+    <input name="files" type="file" multiple webkitdirectory directory />
+    <button type="submit">Upload Selected</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Stored items</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Upload date</th>
+          <th>Size</th>
+          <th>Download</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if rows %}
+        {% for row in rows %}
+        <tr>
+          <td>{{ row.name }}</td>
+          <td>{{ row.file_type }}</td>
+          <td>{{ row.uploaded_at }}</td>
+          <td>{{ row.size }}</td>
+          <td>
+            {% if row.download_kind == 'file' %}
+            <a href="{{ url_for('download_file', relative_path=row.name) }}">Download</a>
+            {% else %}
+            <a href="{{ url_for('download_folder', relative_path=row.name) }}">Download ZIP</a>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+          <td colspan="5">No files uploaded yet.</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

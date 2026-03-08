@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Login | File Manager{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>Server File Manager</h1>
+  <p class="muted">Log in with the admin account to manage files.</p>
+  <form method="post" class="form-grid">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" value="admin" required />
+
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" placeholder="Enter password" required />
+
+    <button type="submit">Login</button>
+  </form>
+</section>
+{% endblock %}

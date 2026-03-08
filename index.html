@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Login Page</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+    </div>
+
+    <main class="page">
+      <section class="login-card" aria-labelledby="login-title">
+        <h1 id="login-title">Welcome Back</h1>
+        <p class="subtitle">Sign in to continue your journey.</p>
+
+        <form class="login-form">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required />
+
+          <label for="password">Password</label>
+          <input id="password" type="password" name="password" placeholder="••••••••" required />
+
+          <div class="form-row">
+            <label class="remember">
+              <input type="checkbox" name="remember" />
+              Remember me
+            </label>
+            <a href="#" class="forgot">Forgot password?</a>
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+
+        <p class="signup">Don't have an account? <a href="#">Create one</a></p>
+      </section>
+    </main>
+  </body>
+</html>

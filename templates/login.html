@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login | File Manager{% endblock %}
+{% block content %}
+<section class="card auth-card pop-in">
+  <div class="title-row">
+    <span class="title-icon">🗄️</span>
+    <div>
+      <h1>Server File Manager</h1>
+      <p class="muted">Secure dark-mode workspace for your files.</p>
+    </div>
+  </div>
+
+  <form method="post" class="form-grid">
+    <label for="username">👤 Username</label>
+    <input id="username" name="username" type="text" value="admin" required />
+
+    <label for="password">🔐 Password</label>
+    <input id="password" name="password" type="password" placeholder="Enter password" required />
+
+    <button type="submit" class="cta">Login</button>
+  </form>
+
+  <p class="helper">Default account: <code>admin</code> / <code>1234</code></p>
+</section>
+{% endblock %}

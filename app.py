@@ -78,7 +78,7 @@ def create_app() -> Flask:
     @login_required
     def dashboard():
         if request.method == "POST":
-            uploaded_files = request.files.getlist("files") + request.files.getlist("folder_files")
+            uploaded_files = request.files.getlist("files")
             saved_count = 0
             for uploaded in uploaded_files:
                 if not uploaded or not uploaded.filename:

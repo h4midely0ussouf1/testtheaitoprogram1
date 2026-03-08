@@ -1,40 +1,31 @@
 {% extends "base.html" %}
 {% block title %}Dashboard | File Manager{% endblock %}
 {% block content %}
-<header class="toolbar card pop-in">
+<header class="toolbar">
   <div>
-    <h1>📁 Welcome, {{ username }}</h1>
-    <p class="muted">Upload, browse, and download files stored on the server disk.</p>
+    <h1>Welcome, {{ username }}</h1>
+    <p class="muted">Upload and download files/folders stored on the server disk.</p>
   </div>
   <div class="toolbar-actions">
-    <a class="btn secondary" href="{{ url_for('change_password') }}">🔑 Change Password</a>
-    <a class="btn danger" href="{{ url_for('logout') }}">🚪 Logout</a>
+    <a class="btn secondary" href="{{ url_for('change_password') }}">Change Password</a>
+    <a class="btn danger" href="{{ url_for('logout') }}">Logout</a>
   </div>
 </header>
 
 {% if not password_changed %}
-<div class="notice pop-in">⚠️ Default password detected. Change it now for better security.</div>
+<div class="notice">Default password detected. Please change it now for security.</div>
 {% endif %}
 
-<section class="card pop-in">
-  <h2>⬆️ Upload to server</h2>
+<section class="card">
+  <h2>Upload files or folders</h2>
   <form method="post" enctype="multipart/form-data" class="upload-form">
-    <label class="file-field">
-      <span>📄 Select file(s)</span>
-      <input name="files" type="file" multiple />
-    </label>
-
-    <label class="file-field">
-      <span>🗂️ Select folder</span>
-      <input name="folder_files" type="file" multiple webkitdirectory directory />
-    </label>
-
-    <button type="submit" class="cta">Upload Selected</button>
+    <input name="files" type="file" multiple webkitdirectory directory />
+    <button type="submit">Upload Selected</button>
   </form>
 </section>
 
-<section class="card pop-in">
-  <h2>🧾 Stored items</h2>
+<section class="card">
+  <h2>Stored items</h2>
   <div class="table-wrap">
     <table>
       <thead>
@@ -43,22 +34,22 @@
           <th>Type</th>
           <th>Upload date</th>
           <th>Size</th>
-          <th>Action</th>
+          <th>Download</th>
         </tr>
       </thead>
       <tbody>
         {% if rows %}
         {% for row in rows %}
         <tr>
-          <td data-label="Name">{{ row.name }}</td>
-          <td data-label="Type">{{ row.file_type }}</td>
-          <td data-label="Upload date">{{ row.uploaded_at }}</td>
-          <td data-label="Size">{{ row.size }}</td>
-          <td data-label="Action">
+          <td>{{ row.name }}</td>
+          <td>{{ row.file_type }}</td>
+          <td>{{ row.uploaded_at }}</td>
+          <td>{{ row.size }}</td>
+          <td>
             {% if row.download_kind == 'file' %}
-            <a class="table-link" href="{{ url_for('download_file', relative_path=row.name) }}">⬇️ Download</a>
+            <a href="{{ url_for('download_file', relative_path=row.name) }}">Download</a>
             {% else %}
-            <a class="table-link" href="{{ url_for('download_folder', relative_path=row.name) }}">🧷 Download ZIP</a>
+            <a href="{{ url_for('download_folder', relative_path=row.name) }}">Download ZIP</a>
             {% endif %}
           </td>
         </tr>
